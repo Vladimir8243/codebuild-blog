@@ -15,7 +15,7 @@ phases:
       - s3folder=$(echo $CODEBUILD_SOURCE_VERSION | cut -d "/" -f 2)
       - echo $CODEBUILD_SOURCE_VERSION
       - aws s3api head-object --bucket vb-urls-3bucket-test-experation-time --key automation_last_commit
-      - aws s3 cp s3://ci-pipelinebucket-5urq49af63w/${s3folder}/automation_last_commit .
+      - aws s3 cp s3://ci-pipelinebucket-5urq49af63w/${s3folder}/automation_last_commit . --key automation_last_commit --recursive
       - last_commit=$(cat automation_last_commit)
       - $(echo last_commit)
       - aws s3 ls s3://ci-pipelinebucket-5urq49af63w/${s3folder} --recursive --human-readable
